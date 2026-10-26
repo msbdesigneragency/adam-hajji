@@ -239,6 +239,40 @@ export default function Clinic({
                     "اهتمام بتفاصيلكم. رعاية تناسبكم.",
                   )}
                 </div>
+                <div className="hero-mobile-features">
+                  <span>
+                    <Heart size={18} />
+                    {t(
+                      "Une écoute attentive",
+                      "Attentive listening",
+                      "إصغاء باهتمام",
+                    )}
+                  </span>
+                  <span>
+                    <ScanLine size={18} />
+                    {t(
+                      "Des soins sur mesure",
+                      "Personalized care",
+                      "عناية تناسبكم",
+                    )}
+                  </span>
+                  <span>
+                    <ShieldCheck size={18} />
+                    {t(
+                      "Votre confort, notre priorité",
+                      "Your comfort comes first",
+                      "راحتكم أولويتنا",
+                    )}
+                  </span>
+                  <span>
+                    <CalendarDays size={18} />
+                    {t(
+                      "Rendez-vous en ligne",
+                      "Online appointments",
+                      "حجز موعد عبر الإنترنت",
+                    )}
+                  </span>
+                </div>
               </div>
               <div className="hero-bottom">
                 <div className="slide-nav">
