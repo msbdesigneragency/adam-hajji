@@ -130,6 +130,10 @@ export default function Booking({
       previous?.focus();
     };
   }, []);
+  useEffect(() => {
+    if (window.matchMedia("(max-width:768px)").matches)
+      dialog.current?.scrollTo({ top: 0, behavior: "instant" });
+  }, [step]);
   const labels = [
     t("Soin", "Treatment", "العلاج"),
     t("Date", "Date", "التاريخ"),
@@ -252,7 +256,11 @@ export default function Booking({
         </header>
         <div className="booking-progress">
           {labels.map((label, i) => (
-            <div className={step >= i ? "done" : ""} key={label}>
+            <div
+              className={`${step >= i ? "done" : ""} ${step === i ? "is-current" : ""}`}
+              aria-current={step === i ? "step" : undefined}
+              key={label}
+            >
               <span>{i < step ? <Check size={13} /> : i + 1}</span>
               <small>{label}</small>
             </div>

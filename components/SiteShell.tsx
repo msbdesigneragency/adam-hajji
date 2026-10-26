@@ -44,6 +44,50 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   const t = (a: string, b: string, c: string) => pick(l, a, b, c);
   const [menu, setMenu] = useState(false),
     [booking, setBooking] = useState(false);
+  const mobileMenu = useRef<HTMLDivElement>(null);
+  const mobileToggle = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!menu) return;
+    const previousOverflow = document.body.style.overflow;
+    const mobile = window.matchMedia("(max-width:900px)");
+    if (!mobile.matches) {
+      setMenu(false);
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    mobileMenu.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    const close = () => setMenu(false);
+    const key = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenu(false);
+        mobileToggle.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const links =
+          mobileMenu.current?.querySelectorAll<HTMLAnchorElement>("a");
+        if (!links?.length) return;
+        const first = links[0],
+          last = links[links.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          mobileToggle.current?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          mobileToggle.current?.focus();
+        } else if (document.activeElement === mobileToggle.current) {
+          event.preventDefault();
+          (event.shiftKey ? last : first).focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", key);
+    mobile.addEventListener("change", close);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", key);
+      mobile.removeEventListener("change", close);
+    };
+  }, [menu]);
   const nav = [
     t("Accueil", "Home", "الرئيسية"),
     t("Nos soins", "Treatments", "العلاجات"),
@@ -91,13 +135,17 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
             </div>
             <button
               className="button nav-book"
-              onClick={() => setBooking(true)}
+              onClick={() => {
+                setMenu(false);
+                setBooking(true);
+              }}
             >
               {t("Prendre rendez-vous", "Book a visit", "حجز موعد")}
               <ArrowUpRight size={15} />
             </button>
             <button
               className="icon mobile-toggle"
+              ref={mobileToggle}
               aria-label={t("Menu", "Menu", "القائمة")}
               aria-expanded={menu}
               aria-controls="mobile-navigation"
@@ -107,6 +155,14 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
             </button>
           </div>
         </nav>
+        {menu && (
+          <button
+            className="mobile-menu-backdrop"
+            aria-label={t("Fermer le menu", "Close menu", "إغلاق القائمة")}
+            tabIndex={-1}
+            onClick={() => setMenu(false)}
+          />
+        )}
         <AnimatePresence>
           {menu && (
             <motion.div
@@ -115,6 +171,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
               exit={{ opacity: 0, y: -10 }}
               className="mobile-menu"
               id="mobile-navigation"
+              ref={mobileMenu}
             >
               {nav.map((n, i) => (
                 <Link key={n} onClick={() => setMenu(false)} href={hrefs[i]}>
@@ -125,6 +182,8 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
                 {["fr", "en", "ar"].map((lang) => (
                   <Link
                     key={lang}
+                    className={l === lang ? "selected" : ""}
+                    onClick={() => setMenu(false)}
                     href={`/${lang}${chosen ? "/services/" + chosen[0] : catalog ? "/services" : ""}`}
                   >
                     {lang.toUpperCase()}

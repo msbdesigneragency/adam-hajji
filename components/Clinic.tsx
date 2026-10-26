@@ -126,6 +126,17 @@ export default function Clinic({
           <>
             <section
               className="hero"
+              data-slide={slide}
+              onPointerDown={(event) => {
+                if (
+                  event.pointerType !== "mouse" &&
+                  !(event.target as HTMLElement).closest(
+                    "[data-autoplay-toggle]",
+                  ) &&
+                  window.matchMedia("(max-width:768px)").matches
+                )
+                  setPaused(true);
+              }}
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
               onFocusCapture={() => setFocused(true)}
@@ -175,18 +186,33 @@ export default function Clinic({
                     "عيادة طب الأسنان · الجديدة",
                   )}
                 </div>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={slide}
-                    initial={{ opacity: 0, y: reduced ? 0 : 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.35 }}
-                  >
-                    <h1>{titles[slide]}</h1>
-                    <p>{descriptions[slide]}</p>
-                  </motion.div>
-                </AnimatePresence>
+                <div className="hero-copy-stack">
+                  {titles.map((title, index) => (
+                    <div
+                      key={index}
+                      className="hero-copy-reserve"
+                      aria-hidden="true"
+                    >
+                      <span className="hero-heading">{title}</span>
+                      <span className="hero-description">
+                        {descriptions[index]}
+                      </span>
+                    </div>
+                  ))}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={slide}
+                      className="hero-copy"
+                      initial={{ opacity: 0, y: reduced ? 0 : 18 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <h1>{titles[slide]}</h1>
+                      <p>{descriptions[slide]}</p>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
                 <div className="hero-buttons">
                   <button className="button" onClick={() => setBooking(true)}>
                     {t(
@@ -223,6 +249,7 @@ export default function Clinic({
                         key={i}
                         aria-label={`${t("Diapositive", "Slide", "شريحة")} ${i + 1}`}
                         className={slide === i ? "current" : ""}
+                        aria-pressed={slide === i}
                         onClick={() => setSlide(i)}
                       />
                     ))}
@@ -249,7 +276,18 @@ export default function Clinic({
                       "Pause or play",
                       "إيقاف أو تشغيل",
                     )}
-                    onClick={() => setPaused(!paused)}
+                    data-autoplay-toggle
+                    onClick={() => {
+                      const next = !paused;
+                      setPaused(next);
+                      if (
+                        !next &&
+                        window.matchMedia("(max-width:768px)").matches
+                      ) {
+                        setFocused(false);
+                        setHovered(false);
+                      }
+                    }}
                   >
                     {paused ? <Play size={14} /> : <Pause size={14} />}
                   </button>

@@ -1,0 +1,1149 @@
+/* Layout helpers are inert on desktop; all refinements below are mobile-only. */
+.hero-copy-reserve,
+.mobile-menu-backdrop {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --mobile-gutter: clamp(18px, 5vw, 32px);
+  }
+  html {
+    scroll-padding-top: 108px;
+    scrollbar-gutter: stable;
+  }
+  .glass {
+    top: calc(12px + env(safe-area-inset-top));
+    width: calc(100% - 24px);
+    max-width: 680px;
+    min-height: 66px;
+    padding: 8px 8px 8px 16px;
+    gap: 10px;
+    z-index: 2;
+  }
+  .brand,
+  .brand .clinic-logo {
+    width: clamp(112px, 30vw, 146px);
+  }
+  .brand {
+    min-height: 44px;
+  }
+  .nav-actions {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .nav-book {
+    min-height: 44px;
+    padding: 11px 12px;
+    font-size: 10px;
+    gap: 7px;
+  }
+  .nav-book svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .mobile-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+  .mobile-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: #15274726;
+    pointer-events: auto;
+    cursor: default;
+  }
+  .mobile-menu {
+    top: calc(90px + env(safe-area-inset-top));
+    left: 12px;
+    right: 12px;
+    max-width: 680px;
+    margin-inline: auto;
+    max-height: calc(
+      100dvh - 106px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 12px 18px 18px;
+    gap: 0;
+    border-radius: 22px;
+    z-index: 1;
+  }
+  .mobile-menu > a {
+    min-height: 49px;
+    display: flex;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .mobile-menu .languages {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .mobile-menu .languages a {
+    display: grid;
+    place-items: center;
+    min-height: 46px;
+    padding: 10px;
+    background: var(--pale);
+    border-radius: 9px;
+    font-size: 12px;
+  }
+  .mobile-menu .languages a.selected {
+    background: #e8f1ff;
+    color: var(--blue);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "photo" "controls";
+    padding-top: calc(102px + env(safe-area-inset-top));
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+  .hero-content {
+    grid-area: copy;
+    width: 100%;
+    max-width: 640px;
+    min-width: 0;
+    margin-inline: auto;
+    padding: 10px var(--mobile-gutter) 0;
+  }
+  .hero-content .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .hero-copy-stack {
+    display: grid;
+  }
+  .hero-copy-stack > .hero-copy,
+  .hero-copy-stack > .hero-copy-reserve {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+  .hero-copy-reserve {
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .hero h1,
+  .hero-heading,
+  [dir="rtl"] .hero h1,
+  [dir="rtl"] .hero-heading {
+    display: block;
+    font-size: clamp(34px, 9.5vw, 42px);
+    line-height: 1.13;
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    max-width: 20ch;
+    white-space: normal;
+    text-wrap: balance;
+    color: var(--navy);
+  }
+  [dir="rtl"] .hero h1,
+  [dir="rtl"] .hero-heading {
+    letter-spacing: 0;
+    line-height: 1.38;
+  }
+  .hero-content p,
+  .hero-description {
+    display: block;
+    max-width: 40ch;
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #66768a;
+    font-weight: 400;
+    text-wrap: pretty;
+  }
+  [dir="rtl"] .hero-content p,
+  [dir="rtl"] .hero-description {
+    line-height: 1.8;
+  }
+  .hero-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .hero-buttons .button {
+    min-height: 49px;
+    min-width: 0;
+    padding: 13px 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    gap: 8px;
+    white-space: normal;
+    border-radius: 9px;
+    text-align: center;
+  }
+  .hero-buttons .button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .hero-note {
+    margin-top: 16px;
+    margin-bottom: 0;
+    gap: 8px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+  .hero-note svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .hero-photo {
+    grid-area: photo;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    max-width: 768px;
+    margin: 12px auto 0;
+  }
+  .hero-photo img,
+  [dir="rtl"] .hero-photo img {
+    object-fit: cover;
+    object-position: 53% 50%;
+    filter: saturate(0.85);
+  }
+  .hero-photo img:nth-child(2),
+  [dir="rtl"] .hero-photo img:nth-child(2) {
+    object-position: 65% 40%;
+  }
+  .hero-photo img:nth-child(3),
+  [dir="rtl"] .hero-photo img:nth-child(3) {
+    object-position: 19% 50%;
+  }
+  .hero-shade,
+  [dir="rtl"] .hero-shade {
+    background: linear-gradient(
+      180deg,
+      #f3f6f8 0%,
+      #f3f6f860 9%,
+      #f3f6f800 24%
+    );
+  }
+  .hero-bottom {
+    grid-area: controls;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin: 0;
+    padding: 6px var(--mobile-gutter) 10px;
+    justify-content: center;
+    border-bottom: 1px solid var(--line);
+    z-index: 1;
+  }
+  .slide-nav {
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    max-width: 350px;
+  }
+  .slide-nav > span {
+    display: none;
+  }
+  .slide-nav .icon {
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+  }
+  .progress {
+    gap: 0;
+  }
+  .progress button,
+  .progress button.current {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border-radius: 9px;
+  }
+  .progress button::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 3px;
+    border-radius: 2px;
+    background: #15274730;
+    inset: 0;
+    margin: auto;
+  }
+  .progress button.current::before {
+    background: var(--blue);
+  }
+  .photo-caption {
+    display: none;
+  }
+  .location-pill,
+  [dir="rtl"] .location-pill {
+    position: relative;
+    inset: auto;
+    grid-area: photo;
+    align-self: end;
+    justify-self: end;
+    margin: 0 var(--mobile-gutter) 12px;
+    padding: 8px 10px;
+    font-size: 9px;
+    z-index: 3;
+  }
+  .trust-strip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 13px var(--mobile-gutter);
+    gap: 0;
+  }
+  .trust-strip span {
+    min-width: 0;
+    min-height: 58px;
+    flex-basis: auto;
+    gap: 10px;
+    padding: 10px 8px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .trust-strip span:nth-child(odd) {
+    border-inline-end: 1px solid var(--line);
+    padding-inline-start: 0;
+  }
+  .trust-strip span:nth-child(even) {
+    padding-inline-start: 16px;
+  }
+  .trust-strip span:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+  .trust-strip svg {
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+  }
+
+  .section {
+    width: 100%;
+    max-width: 720px;
+    padding: 54px var(--mobile-gutter);
+  }
+  .section h2,
+  .section-top h2,
+  .doctor-copy h2,
+  .faq h2,
+  .contact h2,
+  .booking-banner h2,
+  .clinic-panel h2 {
+    font-size: clamp(28px, 7.6vw, 36px);
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+    white-space: normal;
+    text-wrap: balance;
+  }
+  [dir="rtl"] .section h2,
+  [dir="rtl"] .clinic-panel h2 {
+    line-height: 1.45;
+    letter-spacing: 0;
+  }
+  .section-top {
+    display: block;
+    margin-bottom: 26px;
+  }
+  .section-top > div:last-child {
+    max-width: none;
+    margin-top: 20px;
+  }
+  .section-top p,
+  .section-top > p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-top: 18px;
+    margin-bottom: 16px;
+  }
+  .eyebrow {
+    margin-bottom: 15px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .text-link {
+    min-height: 44px;
+    gap: 15px;
+    font-size: 12px;
+  }
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .service-card {
+    min-width: 0;
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+  .service-card-top {
+    margin-bottom: 18px;
+  }
+  .service-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .service-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+  .service-card h3 {
+    min-height: 2.8em;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-size: 11.5px;
+    line-height: 1.7;
+  }
+  .service-card .small-label {
+    font-size: 8px;
+    line-height: 1.6;
+    margin-top: 18px;
+  }
+  .demo-note {
+    font-size: 10px;
+    line-height: 1.7;
+    margin-top: 18px;
+  }
+  .doctor {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+    padding-top: 8px;
+  }
+  .portrait-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+  .portrait-wrap > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 64% 35%;
+    border-radius: 13px;
+  }
+  .portrait-label {
+    position: relative;
+    inset: auto;
+    padding: 18px 0 0;
+    background: none;
+    border-radius: 0;
+    gap: 7px;
+  }
+  .portrait-label strong {
+    font-size: 17px;
+  }
+  .portrait-label span {
+    font-size: 11.5px;
+    line-height: 1.65;
+    padding-inline-end: 25px;
+  }
+  .portrait-label svg {
+    top: 19px;
+  }
+  .doctor-copy h2 {
+    margin-bottom: 20px;
+  }
+  .doctor-copy p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-top: 14px;
+  }
+  .signature {
+    margin: 22px 0 12px;
+    font-size: 30px;
+  }
+  .clinic-section {
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 6px;
+  }
+  .clinic-section > img {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: 22% 50%;
+  }
+  .clinic-panel {
+    position: relative;
+    inset: auto;
+    width: auto;
+    max-width: 650px;
+    max-height: none;
+    margin: -14px var(--mobile-gutter) 0;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+  }
+  .clinic-panel p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 18px 0 12px;
+  }
+  .values {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+  .values > div:not(:first-child) {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 0 16px;
+  }
+  .values > div > svg {
+    grid-row: span 2;
+    width: 27px;
+    height: 27px;
+    margin: 0;
+  }
+  .values h3 {
+    font-size: 16px;
+    margin: 0 0 8px;
+  }
+  .values p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .booking-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: auto;
+    max-width: 650px;
+    margin: 0 var(--mobile-gutter);
+    padding: 30px 24px;
+    gap: 27px;
+  }
+  .booking-banner p {
+    max-width: none;
+    font-size: 13px;
+    line-height: 1.75;
+    margin: 18px 0 22px;
+  }
+  .booking-banner > div > .button {
+    min-height: 49px;
+    padding: 14px 17px;
+    font-size: 12px;
+    white-space: normal;
+    gap: 12px;
+  }
+  .booking-banner p.demo-note {
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .appointment-preview {
+    width: 100%;
+    min-width: 0;
+    transform: none;
+    padding: 23px 19px;
+  }
+  .appointment-preview h3 {
+    font-size: 17px;
+  }
+  .mini-week {
+    gap: 6px;
+    margin: 22px 0;
+  }
+  .mini-week button {
+    min-width: 0;
+    min-height: 66px;
+    gap: 12px;
+    padding: 12px 3px;
+    font-size: 18px;
+  }
+  .preview-bottom {
+    font-size: 11px;
+    line-height: 1.6;
+    gap: 8px;
+  }
+  .advice-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .advice-grid article {
+    padding-top: 22px;
+  }
+  .advice-grid h3 {
+    font-size: 18px;
+    margin: 13px 0 10px;
+  }
+  .advice-grid p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .faq {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .faq > div:first-child {
+    margin-bottom: 0;
+  }
+  .faq details {
+    padding: 0;
+  }
+  .faq summary {
+    min-height: 65px;
+    padding: 17px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    gap: 16px;
+  }
+  .faq summary svg {
+    width: 20px;
+    height: 20px;
+  }
+  .faq details p {
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 0 0 20px;
+  }
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 27px;
+    padding-top: 6px;
+  }
+  .contact p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .contact p.demo-note {
+    max-width: none;
+    font-size: 11px;
+  }
+  .contact .button {
+    min-height: 49px;
+    margin-top: 24px;
+    font-size: 12px;
+    white-space: normal;
+    gap: 14px;
+  }
+  .contact > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: 22% 50%;
+    margin: 0;
+  }
+  footer {
+    padding: 38px var(--mobile-gutter) calc(22px + env(safe-area-inset-bottom));
+  }
+  .footer-top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 23px;
+    padding-bottom: 24px;
+  }
+  .footer-top > p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .footer-top > div:last-child {
+    gap: 2px 22px;
+  }
+  .footer-top > div:last-child a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px 20px;
+    padding-top: 18px;
+    font-size: 10px;
+    line-height: 1.7;
+  }
+  .footer-bottom a {
+    min-height: 44px;
+  }
+  .page-heading {
+    padding: calc(119px + env(safe-area-inset-top)) var(--mobile-gutter) 40px;
+  }
+  .page-heading h1 {
+    font-size: clamp(33px, 8.8vw, 44px);
+    line-height: 1.13;
+    white-space: normal;
+    text-wrap: balance;
+  }
+  .page-heading p {
+    font-size: 13px;
+    line-height: 1.75;
+    margin-top: 19px;
+  }
+  .detail {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 27px;
+  }
+  .detail > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 53% 50%;
+  }
+  .detail p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 18px 0 22px;
+  }
+}
+@media (max-width: 768px) {
+  .modal-backdrop {
+    align-items: flex-start;
+    padding: max(8px, env(safe-area-inset-top)) 8px
+      max(8px, env(safe-area-inset-bottom));
+    overscroll-behavior: contain;
+  }
+  .booking-modal {
+    width: 100%;
+    max-width: 620px;
+    max-height: calc(
+      100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    border-radius: 16px;
+    scroll-padding-top: 124px;
+    overscroll-behavior: contain;
+  }
+  .booking-modal .modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    min-height: 68px;
+    padding: 12px 16px;
+    background: white;
+  }
+  .booking-modal .modal-header > span {
+    gap: 12px;
+    min-width: 0;
+  }
+  .booking-modal .modal-header small {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+  .booking-modal .booking-logo {
+    width: 126px;
+  }
+  .booking-modal .icon {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+  }
+  .booking-progress {
+    position: sticky;
+    top: 68px;
+    z-index: 4;
+    padding: 12px 16px;
+    background: white;
+    gap: 6px;
+    min-height: 50px;
+  }
+  .booking-progress > div {
+    flex: 1;
+    min-width: 0;
+    gap: 5px;
+  }
+  .booking-progress > div.is-current {
+    flex: 3;
+  }
+  .booking-progress span {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .booking-progress small {
+    display: none;
+  }
+  .booking-progress .is-current small {
+    display: block;
+    font-size: 10px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .booking-layout {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .booking-summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px 18px;
+    gap: 8px 15px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .booking-summary > svg,
+  .booking-summary h3,
+  .booking-summary hr,
+  .booking-summary > p:nth-last-child(2),
+  .booking-summary small {
+    display: none;
+  }
+  .booking-summary > p {
+    grid-column: 1/-1;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+  }
+  .booking-summary > div {
+    font-size: 11px;
+    margin: 0;
+    gap: 7px;
+  }
+  .booking-summary > div svg {
+    width: 14px;
+    height: 14px;
+  }
+  .booking-main {
+    padding: 24px 18px;
+    min-height: 0;
+  }
+  .booking-main h2 {
+    font-size: clamp(25px, 7vw, 31px);
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+  .booking-main > .demo-note {
+    font-size: 10px;
+    line-height: 1.7;
+    margin: 13px 0 22px;
+  }
+  .booking-services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .booking-services button {
+    min-width: 0;
+    min-height: 59px;
+    padding: 13px 12px;
+    border-radius: 9px;
+    font-size: 12px;
+    line-height: 1.5;
+    gap: 8px;
+  }
+  .booking-services button svg,
+  .booking-services button > span {
+    flex-shrink: 0;
+  }
+  .calendar {
+    max-width: 470px;
+  }
+  .calendar-toolbar {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .calendar-toolbar strong {
+    font-size: 14px;
+  }
+  .calendar-grid {
+    gap: 4px;
+  }
+  .calendar-grid small {
+    font-size: 10px;
+    padding: 8px 0;
+  }
+  .calendar-grid button {
+    min-height: 44px;
+    padding: 10px 0;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+  .slot-group {
+    margin: 22px 0;
+  }
+  .slot-group h4 {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .slots button {
+    min-width: 0;
+    min-height: 46px;
+    padding: 12px 6px;
+    font-size: 13px;
+  }
+  .patient-form {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .patient-form label {
+    grid-column: 1/-1;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .patient-form input,
+  .patient-form textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .patient-form textarea {
+    min-height: 98px;
+  }
+  .patient-form .error {
+    font-size: 11px;
+  }
+  .booking-controls {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+    padding-top: 17px;
+    border-top: 1px solid var(--line);
+  }
+  .booking-controls .button {
+    min-width: 0;
+    flex: 1;
+    min-height: 49px;
+    padding: 13px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: normal;
+    gap: 9px;
+  }
+  .booking-controls .button svg {
+    flex-shrink: 0;
+    width: 16px;
+  }
+  .review > div {
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.6;
+    gap: 18px;
+  }
+  .review > div strong {
+    text-align: end;
+  }
+  .review > p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .success {
+    padding: 14px 0;
+  }
+  .success p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .success .button {
+    min-height: 49px;
+    white-space: normal;
+    font-size: 12px;
+  }
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .hero-content {
+    padding-top: 18px;
+  }
+  .hero-photo {
+    aspect-ratio: 16 / 9;
+  }
+  .hero h1,
+  .hero-heading,
+  [dir="rtl"] .hero h1,
+  [dir="rtl"] .hero-heading {
+    max-width: 23ch;
+  }
+  .hero-buttons {
+    max-width: 490px;
+  }
+  .hero-note {
+    margin-bottom: 0;
+  }
+  .advice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .footer-top > div:last-child {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 380px) {
+  .glass {
+    padding-inline-start: 13px;
+    gap: 6px;
+  }
+  .brand,
+  .brand .clinic-logo {
+    width: 112px;
+  }
+  .nav-book {
+    font-size: 9px;
+    padding-inline: 9px;
+    gap: 5px;
+  }
+  .nav-book svg {
+    display: none;
+  }
+  .booking-services {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .service-card {
+    padding: 18px 13px;
+  }
+  .service-card-top {
+    gap: 8px;
+  }
+  .service-card h3 {
+    font-size: 13px;
+  }
+  .service-card p {
+    font-size: 11px;
+  }
+  .booking-banner {
+    padding-inline: 20px;
+  }
+  .booking-main {
+    padding-inline: 14px;
+  }
+  .booking-progress {
+    padding-inline: 14px;
+    gap: 4px;
+  }
+  .booking-modal .modal-header {
+    padding-inline: 14px;
+  }
+}
+@media (max-width: 359px) {
+  .hero-buttons {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .hero-buttons .button {
+    justify-content: space-between;
+    padding-inline: 17px;
+  }
+  .hero-content .eyebrow {
+    font-size: 8px;
+  }
+  .trust-strip span {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .trust-strip span:nth-child(even) {
+    padding-inline-start: 10px;
+  }
+  .booking-modal .modal-header small {
+    max-width: 68px;
+  }
+}
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .hero-photo {
+    animation: mobile-photo-settle 0.65s ease both;
+  }
+  @keyframes mobile-photo-settle {
+    from {
+      transform: translateY(7px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+@media (max-width: 768px) {
+  .clinic-panel {
+    width: calc(100% - 2 * var(--mobile-gutter));
+    margin: -14px auto 0;
+  }
+  .booking-banner {
+    width: calc(100% - 2 * var(--mobile-gutter));
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(94px + env(safe-area-inset-top));
+  }
+  .hero-content {
+    padding-top: 8px;
+  }
+  .hero-content .eyebrow {
+    margin-bottom: 14px;
+  }
+  .hero-content p,
+  .hero-description {
+    margin-top: 12px;
+  }
+  .hero-buttons {
+    margin-top: 18px;
+  }
+  .hero-note {
+    margin-top: 12px;
+  }
+  .hero-photo {
+    margin-top: 8px;
+    aspect-ratio: 3 / 2;
+  }
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .hero-content {
+    padding-top: 14px;
+  }
+  .hero-photo {
+    aspect-ratio: 16 / 9;
+  }
+}
+@media (max-width: 359px) {
+  .glass {
+    padding-inline: 10px 6px;
+    gap: 4px;
+  }
+  .nav-book {
+    width: 94px;
+    padding: 8px 6px;
+    white-space: normal;
+    line-height: 1.35;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  [dir="rtl"] .page-heading h1,
+  [dir="rtl"] .booking-main h2 {
+    line-height: 1.4;
+  }
+}
