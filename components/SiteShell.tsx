@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Logo from "./Logo";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { pick, services } from "@/lib/data";
 import Booking from "./Booking";
@@ -104,7 +104,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   ];
   if (pathname.startsWith("/admin")) return <>{children}</>;
   return (
-    <div onClickCapture={navigate}>
+    <div className="public-site" onClickCapture={navigate}>
       <header className="nav-shell">
         <nav className="glass">
           <Link href={`/${l}`} className="brand">
@@ -196,6 +196,20 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       </header>
       <div className="route-content" data-leaving={leaving}>
         {children}
+      </div>
+      <div className="mobile-booking-dock" hidden={menu || booking}>
+        <button
+          type="button"
+          className="button mobile-booking-button"
+          aria-haspopup="dialog"
+          onClick={() => setBooking(true)}
+        >
+          <CalendarDays size={19} aria-hidden="true" />
+          <span>
+            {t("Prendre rendez-vous", "Book an appointment", "حجز موعد")}
+          </span>
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </button>
       </div>
       {booking && <Booking locale={l} onClose={() => setBooking(false)} />}
     </div>
