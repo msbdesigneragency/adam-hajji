@@ -1468,3 +1468,17 @@
     object-position: center top;
   }
 }
+
+/* Compact mobile hero: remove the lower details and controls block. */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 0;
+    padding-bottom: 28px;
+  }
+  .hero .hero-mobile-features,
+  .hero .location-pill,
+  [dir="rtl"] .hero .location-pill,
+  .hero .hero-bottom {
+    display: none;
+  }
+}
