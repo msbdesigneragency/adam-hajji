@@ -5,6 +5,7 @@ import "@fontsource/ibm-plex-sans-arabic/400.css";
 import "@fontsource/ibm-plex-sans-arabic/500.css";
 import "./globals.css";
 import "./mobile.css";
+import "./desktop-hero.css";
 import SiteShell from "@/components/SiteShell";
 export const metadata: Metadata = {
   title: "Dr. Adam Hajji | Adam Dental Center",

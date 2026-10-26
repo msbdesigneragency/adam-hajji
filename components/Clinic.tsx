@@ -264,6 +264,40 @@ export default function Clinic({
                     <ArrowRight size={17} />
                   </Link>
                 </div>
+                <div className="hero-desktop-features">
+                  <span>
+                    <Heart size={22} />
+                    {t(
+                      "Une approche humaine",
+                      "A human approach",
+                      "رعاية إنسانية",
+                    )}
+                  </span>
+                  <span>
+                    <ScanLine size={22} />
+                    {t(
+                      "Des soins sur mesure",
+                      "Care tailored to you",
+                      "عناية تناسبكم",
+                    )}
+                  </span>
+                  <span>
+                    <ShieldCheck size={22} />
+                    {t(
+                      "Votre confort, notre priorité",
+                      "Your comfort comes first",
+                      "راحتكم أولويتنا",
+                    )}
+                  </span>
+                  <span>
+                    <CalendarDays size={22} />
+                    {t(
+                      "Rendez-vous en ligne",
+                      "Online appointments",
+                      "حجز موعد عبر الإنترنت",
+                    )}
+                  </span>
+                </div>
                 <div className="hero-note">
                   <ShieldCheck size={18} />
                   {t(
