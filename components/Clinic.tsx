@@ -175,6 +175,17 @@ export default function Clinic({
                     className={slide === i ? "visible" : ""}
                   />
                 ))}
+                <Image
+                  src="/images/treatment-mobile.png"
+                  alt={t(
+                    "Dr. Adam pendant un soin",
+                    "Dr. Adam providing care",
+                    "الدكتور آدم أثناء العلاج",
+                  )}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 1px"
+                  className={`hero-mobile-treatment${slide === 0 ? " visible" : ""}`}
+                />
                 <div className="hero-shade" />
               </div>
               <div className="hero-content">

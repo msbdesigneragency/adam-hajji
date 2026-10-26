@@ -1433,3 +1433,20 @@
     padding-inline: 8px;
   }
 }
+
+/* The supplied portrait photo is exclusive to the first mobile slide. */
+.hero-photo .hero-mobile-treatment {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hero .hero-photo > img:first-child {
+    display: none;
+  }
+  .hero .hero-photo .hero-mobile-treatment,
+  [dir="rtl"] .hero .hero-photo .hero-mobile-treatment {
+    display: block;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
