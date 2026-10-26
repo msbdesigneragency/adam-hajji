@@ -186,6 +186,28 @@ export default function Clinic({
                   sizes="(max-width: 768px) 100vw, 1px"
                   className={`hero-mobile-treatment${slide === 0 ? " visible" : ""}`}
                 />
+                {["portrait", "clinic"].map((image, index) => (
+                  <Image
+                    key={`mobile-${image}`}
+                    src={`/images/${image}-mobile.png`}
+                    alt={
+                      index === 0
+                        ? t(
+                            "Dr. Adam Hajji",
+                            "Dr. Adam Hajji",
+                            "الدكتور آدم حجي",
+                          )
+                        : t(
+                            "La réception du cabinet",
+                            "Clinic reception",
+                            "استقبال العيادة",
+                          )
+                    }
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1px"
+                    className={`hero-mobile-alternate${slide === index + 1 ? " visible" : ""}`}
+                  />
+                ))}
                 <div className="hero-shade" />
               </div>
               <div className="hero-content">

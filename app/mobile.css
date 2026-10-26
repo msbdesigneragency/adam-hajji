@@ -1450,3 +1450,21 @@
     object-position: center top;
   }
 }
+
+/* Portrait alternatives for the remaining mobile carousel slides. */
+.hero-photo .hero-mobile-alternate {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hero .hero-photo > img:nth-child(2),
+  .hero .hero-photo > img:nth-child(3) {
+    display: none;
+  }
+  .hero .hero-photo .hero-mobile-alternate,
+  [dir="rtl"] .hero .hero-photo .hero-mobile-alternate {
+    display: block;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
