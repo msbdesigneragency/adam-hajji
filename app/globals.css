@@ -2792,9 +2792,10 @@ body {
 
 /* Slightly reduce navbar branding at every viewport without shifting navigation. */
 .glass .brand .clinic-logo {
-  transform: scale(0.9);
+  transform: scale(0.8);
   transform-origin: left center;
 }
 [dir="rtl"] .glass .brand .clinic-logo {
   transform-origin: right center;
 }
+

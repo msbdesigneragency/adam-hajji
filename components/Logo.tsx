@@ -11,7 +11,7 @@ export default function Logo({
   return (
     <span className={`clinic-logo ${className}`}>
       <Image
-        src="/images/clinic-logo.png"
+        src="/images/clinic-logo-transparent.png"
         alt="Dr. Adam Dental Clinic"
         width={1895}
         height={830}
@@ -21,3 +21,4 @@ export default function Logo({
     </span>
   );
 }
+
