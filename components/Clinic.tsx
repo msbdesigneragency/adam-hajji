@@ -127,19 +127,18 @@ export default function Clinic({
             <section
               className="hero"
               data-slide={slide}
-              onPointerDown={(event) => {
+              onPointerEnter={(event) => {
                 if (
-                  event.pointerType !== "mouse" &&
-                  !(event.target as HTMLElement).closest(
-                    "[data-autoplay-toggle]",
-                  ) &&
-                  window.matchMedia("(max-width:768px)").matches
+                  event.pointerType === "mouse" &&
+                  window.matchMedia("(min-width:769px) and (hover:hover)").matches
                 )
-                  setPaused(true);
+                  setHovered(true);
               }}
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              onFocusCapture={() => setFocused(true)}
+              onPointerLeave={() => setHovered(false)}
+              onFocusCapture={() => {
+                if (window.matchMedia("(min-width:769px)").matches)
+                  setFocused(true);
+              }}
               onBlurCapture={(e) => {
                 if (!e.currentTarget.contains(e.relatedTarget as Node))
                   setFocused(false);
