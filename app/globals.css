@@ -2789,3 +2789,12 @@ body {
     width: 112px;
   }
 }
+
+/* Slightly reduce navbar branding at every viewport without shifting navigation. */
+.glass .brand .clinic-logo {
+  transform: scale(0.9);
+  transform-origin: left center;
+}
+[dir="rtl"] .glass .brand .clinic-logo {
+  transform-origin: right center;
+}
