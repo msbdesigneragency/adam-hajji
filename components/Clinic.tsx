@@ -25,6 +25,7 @@ import {
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { pick, services, name } from "@/lib/data";
 import Booking from "./Booking";
+import Logo from "./Logo";
 import { serviceDescription } from "@/lib/serviceContent";
 const icons = [ScanLine, Sparkles, Smile, Heart, ShieldCheck, Plus];
 export default function Clinic({
@@ -838,9 +839,9 @@ export default function Clinic({
       </main>
       <footer>
         <div className="footer-top">
-          <div className="footer-brand">
-            Dr. ADAM<span>Dental clinic</span>
-          </div>
+          <Link href={`/${l}`} className="footer-logo">
+            <Logo />
+          </Link>
           <p>
             {t(
               "Une attention sincère.\nUn sourire qui vous ressemble.",

@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "./Logo";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { pick, services } from "@/lib/data";
@@ -64,13 +64,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       <header className="nav-shell">
         <nav className="glass">
           <Link href={`/${l}`} className="brand">
-            <Image
-              src="/images/logo.png"
-              width={150}
-              height={66}
-              alt="Dr. Adam Dental Clinic"
-              priority
-            />
+            <Logo priority />
           </Link>
           <div className="desktop-links">
             {nav.map((n, i) => (

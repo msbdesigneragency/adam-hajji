@@ -2675,3 +2675,117 @@ body {
 .section-reveal {
   animation: content-in 0.55s ease both;
 }
+/* A consistent view of the approved transparent logo, with canvas padding framed out. */
+.clinic-logo {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 176px;
+  aspect-ratio: 1775 / 443;
+  overflow: hidden;
+  direction: ltr;
+}
+.clinic-logo > img {
+  position: absolute;
+  inset: auto;
+  top: -46.5011%;
+  left: -3.38028%;
+  width: 106.7606%;
+  max-width: none;
+  height: auto;
+  object-fit: initial;
+  mix-blend-mode: normal;
+}
+.brand {
+  width: 176px;
+  min-height: 48px;
+}
+.dashboard-brand {
+  display: flex;
+  margin-bottom: 42px;
+  align-items: center;
+  min-height: 48px;
+}
+.dashboard-brand .clinic-logo {
+  width: 100%;
+}
+.dashboard-mobile-brand {
+  display: none;
+}
+.gate-brand {
+  margin-bottom: 42px;
+}
+.gate-brand .clinic-logo {
+  width: 210px;
+  max-width: 100%;
+}
+.footer-logo {
+  display: block;
+  align-self: start;
+}
+.footer-logo .clinic-logo {
+  width: 195px;
+  filter: brightness(0) invert(1);
+}
+.modal-header > span {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.booking-logo {
+  width: 145px;
+}
+@media (max-width: 1150px) {
+  .brand,
+  .brand .clinic-logo {
+    width: 150px;
+  }
+}
+@media (max-width: 900px) {
+  .dashboard-brand {
+    display: none;
+  }
+  .dashboard-mobile-brand {
+    display: flex;
+    align-items: center;
+  }
+  .dashboard-mobile-brand .clinic-logo {
+    width: 160px;
+  }
+  .admin-top-name {
+    display: none;
+  }
+  .admin-sidebar nav {
+    margin-top: 6px;
+  }
+}
+@media (max-width: 600px) {
+  .brand,
+  .brand .clinic-logo {
+    width: 130px;
+  }
+  .brand {
+    min-height: 45px;
+  }
+  .dashboard-mobile-brand .clinic-logo {
+    width: 145px;
+  }
+  .gate-brand {
+    margin-bottom: 32px;
+  }
+  .gate-brand .clinic-logo {
+    width: 190px;
+  }
+  .booking-logo {
+    width: 128px;
+  }
+  .modal-header > span {
+    gap: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .brand,
+  .brand .clinic-logo {
+    width: 112px;
+  }
+}

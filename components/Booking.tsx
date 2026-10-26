@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Logo from "./Logo";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -238,7 +239,8 @@ export default function Booking({
       >
         <header className="modal-header">
           <span>
-            Dr. ADAM <small> / {t("RENDEZ-VOUS", "APPOINTMENT", "موعد")}</small>
+            <Logo className="booking-logo" />
+            <small>{t("RENDEZ-VOUS", "APPOINTMENT", "موعد")}</small>
           </span>
           <button
             className="icon"

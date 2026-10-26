@@ -30,6 +30,7 @@ import {
   today,
 } from "@/lib/data";
 import Booking from "./Booking";
+import Logo from "./Logo";
 export default function Dashboard() {
   const [l, setL] = useState("fr"),
     [entered, setEntered] = useState(false),
@@ -176,8 +177,8 @@ export default function Dashboard() {
     return (
       <div className="admin-gate" dir={l === "ar" ? "rtl" : "ltr"}>
         <div className="gate-card">
-          <div className="footer-brand">
-            Dr. ADAM<span>Dental clinic</span>
+          <div className="gate-brand">
+            <Logo priority />
           </div>
           <div className="eyebrow">
             {t("ESPACE PRATICIEN", "PRACTITIONER AREA", "مساحة الطبيب")}
@@ -222,8 +223,8 @@ export default function Dashboard() {
   return (
     <div className="admin" dir={l === "ar" ? "rtl" : "ltr"}>
       <aside className="admin-sidebar">
-        <Link className="footer-brand" href={`/${l}`}>
-          Dr. ADAM<span>Dental clinic</span>
+        <Link className="dashboard-brand" href={`/${l}`}>
+          <Logo priority />
         </Link>
         <span className="small-label">
           {t("ESPACE PRATICIEN", "PRACTITIONER AREA", "مساحة الطبيب")}
@@ -271,7 +272,10 @@ export default function Dashboard() {
       </aside>
       <main className="admin-main">
         <header className="admin-top">
-          <span>
+          <Link className="dashboard-mobile-brand" href={`/${l}`}>
+            <Logo priority />
+          </Link>
+          <span className="admin-top-name">
             Adam Dental Center{" "}
             <span className="demo-badge">
               {t("DÉMO LOCALE", "LOCAL DEMO", "تجربة محلية")}
