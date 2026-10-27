@@ -91,15 +91,15 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   const nav = [
     t("Accueil", "Home", "الرئيسية"),
     t("Nos soins", "Treatments", "العلاجات"),
-    t("Le cabinet", "The clinic", "العيادة"),
     t("Dr. Adam Hajji", "Dr. Adam Hajji", "د. آدم حجي"),
+    t("Le cabinet", "The clinic", "العيادة"),
     t("Contact", "Contact", "اتصل بنا"),
   ];
   const hrefs = [
-    `/${l}`,
-    `/${l}/services`,
-    `/${l}#clinic`,
+    `/${l}#home`,
+    `/${l}#services`,
     `/${l}#doctor`,
+    `/${l}#clinic`,
     `/${l}#contact`,
   ];
   if (pathname.startsWith("/admin")) return <>{children}</>;
